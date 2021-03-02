@@ -45,6 +45,7 @@ module Paperclip
 
       def assign_meta
         return unless instance.respond_to?(:"#{name}_meta=")
+        return unless instance.send("#{name}_content_type") =~ /image/
         meta = populate_meta(@queued_for_write)
         return if meta == {}
 
